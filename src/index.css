@@ -1,0 +1,497 @@
+/* =============================================================================
+   GAMESTORE — DESIGN SYSTEM
+   Direção: "cabine de arcade" — ink quase-preto azulado, dupla de neons
+   (magenta de sinal + ciano voltaico), tipografia técnica condensada para
+   títulos e monoespaçada para preços/dados. Elemento de assinatura: recorte
+   de "ticket perfurado" usado nos cartões de autenticação e nas etiquetas
+   de preço dos jogos.
+   ============================================================================= */
+
+:root {
+  /* Cor */
+  --color-ink: #100e1a;
+  --color-ink-soft: #15122180;
+  --color-panel: #1b1830;
+  --color-panel-raised: #241f3d;
+  --color-panel-border: #322c52;
+  --color-paper: #f4f2fa;
+  --color-muted: #9691b3;
+  --color-muted-dim: #6a648c;
+  --color-signal: #ff3d6e;
+  --color-signal-dim: #c22c55;
+  --color-volt: #4ce0d2;
+  --color-volt-dim: #2fa79c;
+  --color-gold: #ffc857;
+  --color-danger-bg: #3a1526;
+
+  /* Tipografia */
+  --font-display: "Chakra Petch", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  /* Forma */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Sombra / brilho */
+  --glow-signal: 0 0 0 1px rgba(255, 61, 110, 0.35), 0 12px 28px -10px rgba(255, 61, 110, 0.45);
+  --glow-volt: 0 0 0 1px rgba(76, 224, 210, 0.35), 0 12px 28px -10px rgba(76, 224, 210, 0.4);
+  --shadow-card: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+
+  --header-height: 72px;
+  --content-max: 1280px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #1c1733 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, #17142a 0%, transparent 55%),
+    var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+
+/* Scrollbar (webkit) discreta, condizente com o tema escuro */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-panel-border);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-dim);
+}
+
+/* Foco visível — acessibilidade, nunca remover sem substituir */
+:focus-visible {
+  outline: 2px solid var(--color-volt);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Casca do app (Navbar + conteúdo + Footer) ---------- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.app-shell > main {
+  flex: 1;
+}
+
+/* ---------- Layout utilitário ---------- */
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 0 18px;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-volt);
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--color-signal);
+  color: #1a0812;
+  box-shadow: var(--glow-signal);
+}
+.btn-primary:hover:not(:disabled) {
+  background: #ff5c84;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-volt);
+  border-color: var(--color-volt-dim);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(76, 224, 210, 0.1);
+  border-color: var(--color-volt);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-paper);
+  border-color: var(--color-panel-border);
+}
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--color-muted);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* ---------- Formulários ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.field label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.field input,
+.field textarea {
+  background: var(--color-ink);
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-muted-dim);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-volt);
+  box-shadow: 0 0 0 3px rgba(76, 224, 210, 0.15);
+}
+
+.field-error {
+  color: var(--color-signal);
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+.form-error-banner {
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-signal-dim);
+  color: #ffc9d6;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+.form-success-banner {
+  background: #0f2e2a;
+  border: 1px solid var(--color-volt-dim);
+  color: #bdf5ee;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+/* ---------- Elemento de assinatura: cartão "ticket" com aba perfurada ---------- */
+.ticket-card {
+  position: relative;
+  background: var(--color-panel);
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+}
+
+.ticket-card__stub {
+  padding: 28px 32px 22px;
+  text-align: center;
+}
+
+.ticket-card__body {
+  padding: 26px 32px 32px;
+}
+
+.ticket-divider {
+  position: relative;
+  height: 0;
+  border-top: 2px dashed rgba(244, 242, 250, 0.16);
+  margin: 0 26px;
+}
+
+.ticket-divider::before,
+.ticket-divider::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 1px solid var(--color-panel-border);
+}
+
+.ticket-divider::before {
+  left: -36px;
+}
+.ticket-divider::after {
+  right: -36px;
+}
+
+/* ---------- Etiqueta de preço (usada nos cards de jogo) ---------- */
+.price-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 5px 12px 5px 18px;
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  background: var(--color-panel-raised);
+  color: var(--color-paper);
+}
+
+.price-tag--discount {
+  background: var(--color-signal);
+  color: #1a0812;
+}
+
+.price-tag--free {
+  background: var(--color-volt);
+  color: #06201c;
+}
+
+.price-old {
+  font-size: 12px;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-panel-border);
+  color: var(--color-muted);
+}
+
+.badge--volt {
+  color: var(--color-volt);
+  border-color: var(--color-volt-dim);
+}
+
+.badge--gold {
+  color: var(--color-gold);
+  border-color: #8a6a20;
+}
+
+/* ---------- Estado vazio ---------- */
+.empty-state {
+  border: 1px dashed var(--color-panel-border);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.empty-state h3 {
+  color: var(--color-paper);
+  margin-bottom: 8px;
+}
+
+/* ---------- Página de autenticação (Login, Cadastro, Recuperação) ---------- */
+.auth-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  position: relative;
+}
+
+.auth-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(1px 1px at 20px 30px, rgba(244, 242, 250, 0.06) 1px, transparent 0),
+    radial-gradient(1px 1px at 70px 90px, rgba(244, 242, 250, 0.05) 1px, transparent 0),
+    radial-gradient(1px 1px at 130px 40px, rgba(244, 242, 250, 0.05) 1px, transparent 0);
+  background-size: 160px 160px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-card__eyebrow {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.auth-card__title {
+  font-size: 26px;
+}
+
+.auth-card__subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.auth-card__footer {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.auth-card__footer a {
+  color: var(--color-volt);
+  font-weight: 600;
+}
+
+.auth-card__footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-links-row {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+
+.auth-links-row a {
+  color: var(--color-muted);
+}
+
+.auth-links-row a:hover {
+  color: var(--color-volt);
+}

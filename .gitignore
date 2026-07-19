@@ -1,0 +1,11 @@
+# Ambiente
+.env
+.env.local
+.env.example
+
+# Sistema
+.DS_Store
+
+# Modulos
+package-lock.json
+node_modules

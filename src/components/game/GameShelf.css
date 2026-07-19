@@ -1,0 +1,30 @@
+.game-shelf {
+  margin: 44px 0;
+}
+
+.game-shelf__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.game-shelf__header h2 {
+  font-size: 20px;
+}
+
+.game-shelf__header p {
+  font-size: 13px;
+}
+
+.game-shelf__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x proximity;
+}
+
+.game-shelf__track > * {
+  scroll-snap-align: start;
+}

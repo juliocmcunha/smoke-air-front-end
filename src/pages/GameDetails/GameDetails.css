@@ -1,0 +1,176 @@
+.game-details__banner {
+  height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.game-details__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, var(--color-ink) 0%, rgba(16, 14, 26, 0.55) 55%, rgba(16, 14, 26, 0.25) 100%);
+}
+
+.game-details__content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  margin-top: -120px;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 940px) {
+  .game-details__content {
+    grid-template-columns: 1fr;
+    margin-top: -60px;
+  }
+}
+
+.game-details__categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.game-details__main h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 14px;
+}
+
+.game-details__meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-bottom: 22px;
+}
+
+.game-details__meta span:first-child {
+  color: var(--color-gold);
+}
+
+.game-details__description {
+  font-size: 15px;
+  max-width: 68ch;
+  margin-bottom: 32px;
+}
+
+.game-details__screenshots {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 40px;
+}
+
+.game-details__screenshots img {
+  height: 180px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-panel-border);
+  flex-shrink: 0;
+}
+
+.reviews h2 {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.reviews__hint {
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.review-form {
+  margin-bottom: 22px;
+}
+
+.review-form textarea {
+  width: 100%;
+  margin: 14px 0;
+  background: var(--color-ink);
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  resize: vertical;
+}
+
+.reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.review-item {
+  border-bottom: 1px solid var(--color-panel-border);
+  padding-bottom: 18px;
+}
+
+.review-item__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.review-item__user {
+  font-weight: 600;
+  color: var(--color-paper);
+  font-size: 14px;
+}
+
+.review-item p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.review-item__date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-muted-dim);
+}
+
+.buy-panel {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-height) + 20px);
+}
+
+.buy-panel .ticket-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.buy-panel__price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+}
+
+.buy-panel__price strong {
+  font-size: 24px;
+  color: var(--color-paper);
+}
+
+.buy-panel__owned {
+  justify-content: center;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.buy-panel__info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-panel-border);
+  color: var(--color-muted);
+}
