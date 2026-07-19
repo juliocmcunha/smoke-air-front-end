@@ -2,12 +2,12 @@ import type { User } from '@/types/user';
 
 /**
  * Pequeno wrapper sobre o localStorage. Centralizado aqui para que, se um
- * dia vocês trocarem a estratégia de armazenamento (ex.: cookies httpOnly
+ * dia trocarmos a estratégia de armazenamento (ex.: cookies httpOnly
  * setados pelo back-end), só precise mexer neste arquivo.
  */
-const ACCESS_TOKEN_KEY = 'gamestore.accessToken';
-const REFRESH_TOKEN_KEY = 'gamestore.refreshToken';
-const USER_KEY = 'gamestore.user';
+const ACCESS_TOKEN_KEY = 'smokeair.accessToken';
+const REFRESH_TOKEN_KEY = 'smokeair.refreshToken';
+const USER_KEY = 'smokeair.user';
 
 export const tokenStorage = {
   getAccessToken(): string | null {

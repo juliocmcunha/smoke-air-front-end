@@ -43,6 +43,11 @@ export function Navbar() {
               Biblioteca
             </NavLink>
           )}
+          {isAuthenticated && user?.role === 'ADMIN' && (
+            <NavLink to="/admin" onClick={() => setMenuOpen(false)}>
+              Administração
+            </NavLink>
+          )}
 
           <form className="navbar__search" onSubmit={handleSearchSubmit}>
             <input

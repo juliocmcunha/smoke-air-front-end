@@ -257,7 +257,8 @@ img {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   background: var(--color-ink);
   border: 1px solid var(--color-panel-border);
   border-radius: var(--radius-sm);
@@ -266,6 +267,10 @@ img {
   font-family: var(--font-body);
   font-size: 15px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field select {
+  cursor: pointer;
 }
 
 .field input::placeholder,
